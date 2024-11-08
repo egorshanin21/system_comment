@@ -25,7 +25,6 @@ class Comment(models.Model):
         - verbose_name_plural: Human-readable plural name for the model.
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    email = models.EmailField()
     home_page = models.URLField(blank=True, null=True)
     text = models.TextField()
     parent = models.ForeignKey(

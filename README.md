@@ -12,7 +12,7 @@
 # **How to install project:**
 1. Clone the repository to your computer
 
-#### Command: [git clone git@github.com:egorshanin21/DocChat.git]()
+#### Command: [git@github.com:egorshanin21/system_comment.git]()
 
 2. Navigate to the project directory `cd system_comment`
 
