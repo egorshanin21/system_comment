@@ -1,0 +1,32 @@
+{% extends 'index.html' %}  
+
+{% block content %}
+<section>
+    <h2>Post a comment</h2>
+
+{% if parent_id %}
+
+    <form method="post" action="{% url 'add_reply' parent_id=parent_id %}">
+
+{% else %}
+    <form method="post" action="{% url 'add_comment'%}">
+{% endif %}
+
+        {% csrf_token %}
+        {{ form.as_p }}  
+        <input type="hidden" name="parent_id" value="{{ parent_id|default:'' }}"> 
+        <button type="submit" class="btn-custom">{% if parent_id %}Reply{% else %}Public{% endif %}</button>
+
+    </form>
+</section>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

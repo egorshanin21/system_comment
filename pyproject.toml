@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "system-comment"
+version = "0.1.0"
+description = ""
+authors = ["egorshanin21 <egorshanin21@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.1.2"
+captcha = "^0.6.0"
+fields = "^5.0.0"
+route = "^0.1.4"
+django-environ = "^0.11.2"
+psycopg2-binary = "^2.9.10"
+daphne = "^4.1.2"
+channels = "^4.1.0"
+djangorestframework = "^3.15.2"
+djangorestframework-simplejwt = "^5.3.1"
+django-websocket-request = "^0.1.1"
+django-simple-captcha = "^0.6.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
