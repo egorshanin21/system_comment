@@ -30,7 +30,7 @@ def home(request):
     if sort_option == 'name':
         comments = Comment.objects.filter(parent=None).order_by('user__username')
     elif sort_option == 'email':
-        comments = Comment.objects.filter(parent=None).order_by('email')
+        comments = Comment.objects.filter(parent=None).order_by('user__email')
     else:
         comments = Comment.objects.filter(parent=None).order_by('-created_at')
 

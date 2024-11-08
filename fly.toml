@@ -14,13 +14,13 @@ console_command = '/code/manage.py shell'
 release_command = "poetry run python manage.py migrate --noinput"
 
 [env]
-  SECRET_KEY= "${SECRET_KEY}"
+SECRET_KEY="django-insecure-jq@h)&nep2c3s54r%r#ip509x03ti+69_b69_!sx@j&4pa*g@z"
 
-  DATABASE_NAME = "${DATABASE_NAME}"
-  DATABASE_USER = "${DATABASE_USER}"
-  DATABASE_PASSWORD = "${DATABASE_PASSWORD}"
-  DATABASE_HOST = "${DATABASE_HOST}"
-  DATABASE_PORT = "${DATABASE_PORT}"
+DATABASE_NAME="nqzlsvgv"
+DATABASE_USER="nqzlsvgv"
+DATABASE_PASSWORD="XyF2ctqrxSgDwd6V4QKHYv29JhR2WwKc"
+DATABASE_HOST="abul.db.elephantsql.com"
+DATABASE_PORT=5432
 
 [experimental]
 
@@ -45,18 +45,18 @@ release_command = "poetry run python manage.py migrate --noinput"
   url_prefix = '/static/'
 
 [[services]]
-  # Настройка основного веб-сервиса
-  internal_port = 8000
+  internal_port = 8000  # Убедитесь, что порт совпадает с портом вашего приложения
   protocol = "tcp"
 
- [[services.ports]]
-    handlers = ["http"]
-    port = 80
+  [services.concurrency]
+    type = "connections"
+    hard_limit = 25
+    soft_limit = 20
 
-  [[services.tcp_checks]]
-    # Проверка доступности приложения
-    interval = "15s"
-    timeout = "2s"
-    grace_period = "10s"
-    restart_limit = 5
-    port = 8000
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]

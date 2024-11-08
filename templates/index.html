@@ -64,7 +64,7 @@
             <ul>
                 {% for comment in comments %}
                     <li>
-                        <strong>{{ comment.user.username }}</strong> ({{ comment.email }}) - {{ comment.created_at|date:"d M Y H:i" }}:
+                        <strong>{{ comment.user.username }}</strong> ({{ comment.user.email }}) - {{ comment.created_at|date:"d M Y H:i" }}:
                         <p>{{ comment.text }}</p>
                         <a href="{% url 'add_reply' comment.id %}" class="btn-custom btn-narrow">Reply</a>
 

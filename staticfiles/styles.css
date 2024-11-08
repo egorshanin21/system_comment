@@ -142,7 +142,7 @@ header {
     cursor: not-allowed;
 }
 
-/* Новые стили для формы */
+
 form {
     margin: 20px 0;
     padding: 20px;
@@ -163,14 +163,41 @@ textarea {
 }
 
 .comment {
-    border: 1px solid #ccc; /* Рамка вокруг комментария */
-    border-radius: 5px; /* Скругление углов */
-    padding: 15px; /* Внутренние отступы */
-    margin-bottom: 15px; /* Отступ между комментариями */
-    background-color: #f9f9f9; /* Цвет фона для комментария */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Легкая тень для глубины */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .captcha-image {
-    margin-bottom: 100px; /* Поддерживает пропорции изображения */
+    margin-bottom: 100px;
+}
+
+    .pagination {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .pagination span {
+            align-self: center;
+            display: flex;
+            align-items: center;
+        }
+        .sort-buttons {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+
+.logout-form {
+    background: transparent;
+    border: none;
+    display: inline;
 }
