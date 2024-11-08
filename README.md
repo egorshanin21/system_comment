@@ -56,7 +56,7 @@
 1. Go to the directory at the Dockerfile level;
 2. Run the command `docker-compose up --build -d`;
 3. After successfully building the container, run the command `docker-compose start`;
-4. Follow the link http://127.0.0.0:8000/.
+4. Follow the link http://127.0.0.1:8000/.
 
 # Used technologies:
 - Python 3.11.9
