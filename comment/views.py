@@ -46,7 +46,6 @@ def home(request):
     return render(request, 'index.html', {'comments': comments, 'sort_option': sort_option})
 
 
-# @login_required(login_url='login')
 def add_comment(request, parent_id=None):
     """
     Handles submission of a new comment or reply. If the form is valid, it saves the comment,
@@ -64,11 +63,33 @@ def add_comment(request, parent_id=None):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
-            if parent_id:
-                parent_comment = get_object_or_404(Comment, id=parent_id)
-                form.instance.parent = parent_comment
-            form.save()
-            return redirect('index')
+            if 'captcha' in form.cleaned_data:
+                comment = form.save(commit=False)
+                if parent_id:
+                    parent_comment = get_object_or_404(Comment, id=parent_id)
+                    comment.parent = parent_comment
+                comment.save()
+
+                comment_data = {
+                    'id': comment.id,
+                    'text': comment.text,
+                    'email': comment.user.email,
+                    'username': comment.user.username,
+                    'created_at': comment.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+                    'parent_id': comment.parent.id if comment.parent else None,
+                }
+
+                channel_layer = get_channel_layer()
+                async_to_sync(channel_layer.group_send)(
+                    'comment_comments',
+                    {
+                        'type': 'new_comment',
+                        'comment_data': comment_data,
+                    }
+                )
+                return redirect('index')
+            else:
+                form.add_error('captcha', 'The captcha was entered incorrectly. Try again.')
     else:
         form = CommentForm()
 
